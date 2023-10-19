@@ -14,8 +14,11 @@ import googleLogo from "../../images/google-icon.png";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import TextFieldWrapper from "../../components/FormComponents/TextFieldWrapper";
+import { useNavigate } from "react-router-dom";
 
 const LoginUserWithPassword = () => {
+  const navigate = useNavigate();
+
   return (
     <Stack
       direction="row"
@@ -82,7 +85,13 @@ const LoginUserWithPassword = () => {
                         <InputLabel sx={{ mb: 1 }}>Password</InputLabel>
                         <TextFieldWrapper name="password" label="Password" />
                         <Typography
-                          sx={{ color: "primary.main", fontWeight: 700, mt: 1 }}
+                          sx={{
+                            color: "primary.main",
+                            fontWeight: 700,
+                            mt: 1,
+                            cursor: "pointer"
+                          }}
+                          onClick={() => navigate("/loginWithOTP")}
                         >
                           Login with OTP code
                         </Typography>
@@ -95,9 +104,26 @@ const LoginUserWithPassword = () => {
                       </Grid>
                       <Grid item xs={12} md={12}>
                         <Stack direction="row" spacing={1}>
-                          <Typography>Register</Typography>
-                          <Divider orientation="vertical" variant="middle" />
-                          <Typography>Forgot Password</Typography>
+                          <Typography
+                            sx={{ color: "primary.main", cursor: "pointer" }}
+                            onClick={() => navigate("/registerUser")}
+                          >
+                            Register
+                          </Typography>
+                          <Divider
+                            orientation="vertical"
+                            flexItem
+                            sx={{
+                              fontWeight: "bolder",
+                              border: 1,
+                              color: "primary.main"
+                            }}
+                          />
+                          <Typography
+                            sx={{ color: "primary.main", cursor: "pointer" }}
+                          >
+                            Forgot Password
+                          </Typography>
                         </Stack>
                       </Grid>
                     </Grid>
