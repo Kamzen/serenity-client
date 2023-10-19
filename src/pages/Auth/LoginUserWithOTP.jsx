@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import loginLogo from "../../images/hot stone mass.jpg";
 import logo from "../../images/logo.png";
 import {
@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 
 const LoginWithOTP = () => {
   const navigate = useNavigate();
+  const [otp, setOpt] = useState();
 
   return (
     <Stack
@@ -58,17 +59,26 @@ const LoginWithOTP = () => {
             <Formik
               initialValues={{
                 email: "",
-                password: ""
+                otpCode: ""
               }}
               validationSchema={Yup.object().shape({
                 email: Yup.string().required(
                   "Please enter your email or phone number"
                 ),
-                password: Yup.string().required("Password required")
+                otpCode: otp && Yup.string().required("OTP code required")
               })}
-              onSubmit={(values) => {}}
+              onSubmit={(values) => {
+                if (values.otpCode.length > 0) {
+                  // try to login user
+                } else {
+                  // request for user OTP and set it
+                  setTimeout(() => {
+                    setOpt("Something Here");
+                  }, 3000);
+                }
+              }}
             >
-              {() => {
+              {({ formik }) => {
                 return (
                   <Form>
                     <Grid container spacing={2}>
@@ -101,8 +111,11 @@ const LoginWithOTP = () => {
                             variant="outlined"
                             sx={{
                               borderTopLeftRadius: 0,
-                              borderBottomLeftRadius: 0
+                              borderBottomLeftRadius: 0,
+                              width: "20%",
+                              height: 53
                             }}
+                            type="submit"
                           >
                             Get OTP
                           </Button>
@@ -121,9 +134,15 @@ const LoginWithOTP = () => {
                       </Grid>
 
                       <Grid item xs={12} md={12}>
-                        <Button variant="contained" sx={{ width: "100%" }}>
-                          Login
-                        </Button>
+                        {otp && (
+                          <Button
+                            variant="contained"
+                            sx={{ width: "100%" }}
+                            type="submit"
+                          >
+                            Login
+                          </Button>
+                        )}
                       </Grid>
                       <Grid item xs={12} md={12}>
                         <Stack direction="row" spacing={1}>
