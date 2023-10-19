@@ -8,6 +8,8 @@ import { ThemeProvider, CssBaseline } from "@mui/material";
 import Theme from "./Theme";
 import DesktopNavigation from "./components/Navigation/DesktopNavigation";
 import LoginUserWithPassword from "./pages/Auth/LoginUserWithPassword";
+import RegisterUser from "./pages/Auth/RegisterUser";
+import LoginWithOTP from "./pages/Auth/LoginUserWithOTP";
 
 const App = () => {
   return (
@@ -16,10 +18,13 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<DesktopNavigation />} />
+
+          <Route path="/registerUser" element={<RegisterUser />} />
           <Route
             path="/loginWithPassword"
             element={<LoginUserWithPassword />}
           />
+          <Route path="/loginWithOTP" element={<LoginWithOTP />} />
         </Routes>
       </Router>
     </ThemeProvider>
