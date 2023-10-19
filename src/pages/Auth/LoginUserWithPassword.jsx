@@ -98,7 +98,11 @@ const LoginUserWithPassword = () => {
                       </Grid>
 
                       <Grid item xs={12} md={12}>
-                        <Button variant="contained" sx={{ width: "100%" }}>
+                        <Button
+                          variant="contained"
+                          sx={{ width: "100%" }}
+                          type="submit"
+                        >
                           Login
                         </Button>
                       </Grid>
