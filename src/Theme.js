@@ -5,6 +5,18 @@ const Theme = createTheme({
     mode: "light",
     primary: {
       main: "#008d8a"
+    },
+    secondary: {
+      main: "#FFFFFF"
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          height: 50
+        }
+      }
     }
   },
   typography: {
