@@ -10,6 +10,7 @@ import DesktopNavigation from "./components/Navigation/DesktopNavigation";
 import LoginUserWithPassword from "./pages/Auth/LoginUserWithPassword";
 import RegisterUser from "./pages/Auth/RegisterUser";
 import LoginWithOTP from "./pages/Auth/LoginUserWithOTP";
+import Home from "./pages/Home/Home";
 
 const App = () => {
   return (
@@ -17,7 +18,9 @@ const App = () => {
       <CssBaseline />
       <Router>
         <Routes>
-          <Route path="/" element={<DesktopNavigation />} />
+          <Route path="/" element={<DesktopNavigation />}>
+            <Route path="/" element={<Home />} />
+          </Route>
 
           <Route path="/registerUser" element={<RegisterUser />} />
           <Route
